@@ -1,0 +1,21 @@
+#Redirect 301 / http://www.new-website.com
+
+
+<IfModule mod_rewrite.c>
+    #Redirect 301 / http://www.google.com
+
+   Options +FollowSymLinks
+   RewriteEngine on
+
+   # Send request via index.php
+   RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteCond %{REQUEST_FILENAME} !-d
+   RewriteRule ^(.*)$ index.php [L]
+   
+
+   #RewriteRule ^(.*)$ index.php/$1 [L]
+   
+   # ^(.*) means any instance of at least one character
+   #RewriteRule ^(.*)$ index.php/$1 [L]
+
+</IfModule>
