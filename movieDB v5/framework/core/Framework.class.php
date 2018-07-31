@@ -109,9 +109,10 @@ class Framework {
     	// Load configuration file
 		$GLOBALS['config'] = include CONFIG_PATH . "config.php";
 
-		define("URL_ROOT", 		  		$config['ROOT_URI'] . "/index.php/");
+		define("URL_ROOT", 		  		$GLOBALS['config']['ROOT_URI'] . "index.php/");
    	 	// Start session
 		session_start();
+
 	}
 
 
