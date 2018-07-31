@@ -2,11 +2,7 @@
 
 
 <h1>MovieDB All Movies</h1>
-<ul class="list-group">
-      <li class="list-group-item">
-          
-      </li>
-</ul>
+
 <?php if ($movies->num_rows > 0) : ?>
     <ul class="list-group">
         <?php while($movie = $movies->fetch_assoc()) : ?>
