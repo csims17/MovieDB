@@ -1,86 +1,61 @@
 <?php
 
+$uri = $_SERVER['REQUEST_URI'];
+$request_uri = explode('/', $_SERVER['REQUEST_URI']);
+$info;
+//echo "<pre>";
+//print_r($request_uri);
+//echo "</pre>";
+//echo "<p>for begins</p>";
+//echo "<p>count($request_uri)= ". count($request_uri) . "</p>";
+for ($i=0; $i < count($request_uri); $i++) { 
+	//echo "<p>request_uri[". $i . "] = " . $request_uri[$i] . "</p>";
+	//echo "<p>request_uri[". $i . "] = " . $request_uri[$i] . "</p>";
+	//echo "<p>request_uri[". $i . "] = " . $request_uri[$i] . "</p>";
+	if ($request_uri[$i] == 'index.php') {
+		//echo "index found at " . $i;
+		$info = array_slice($request_uri, $i);
 
-/*
-require_once HELPER_PATH . 'RegexRouter.php';
-$router = new RegexRouter();
-
-$router->route('/^\/movies\/(\w+)\/(\d+)\/?$/', function($category, $id){
-    print "category={$category}, id={$id}";
- });
-$router->route('/^\/movies\/(\w+)\/(\d+)\/?$/', function($category, $id){
-    print "category={$category}, id={$id}";
- });
-$router->execute($_SERVER['REQUEST_URI']);
-*/
-	//create get and post methods
-
-	// fix the routing so that this directly compares uri's not exploding them into array
-	// set the controller and the action depending on the get and post request
-	$uri = $_SERVER['REQUEST_URI'];
-	$request_uri = explode('/', $_SERVER['REQUEST_URI']);
-
- 	$controller;
-	$action;
-	$p_key = null;
-
-
-/*
-	if 		($uri == '/home') 							{	$controller = 'Index';			$action = 'index'; }
-	elseif 	($uri == '/movies') 						{	$controller = 'Movies';			$action = 'index'; }
-	elseif 	(preg_match('/movies/\S*',$uri, $p_key)) 	{	$controller = 'Movies';			$action = 'index'; }
-	elseif 	($uri == '/home') 							{}
-	else 												{	$controller = 'Index';			$action = 'error'; }
-
-	switch ($uri) {
-		case '/home':						break;
-		case '/movies':			$controller = 'Movies';			$action = 'index';			break;
-		case '/movies/$p_key':	$controller = 'Movies';			$action = 'show';	$p_key = 		break;
-		
-		default:
-			# code...
-			break;
-	}
-*/
-
-	switch ($request_uri[1]) {
-		case 'home':
-			$controller = 'Index';
-			$action 	= 'index';
-			break;
-		
-		case 'movies':
-			//if (count($request_uri) == 2) {
-				$controller = 'Movie';
-				$action 	= 'index';
-			//}
-			/*
-			elseif (count($request_uri) == 4) {
-				$controller = 'Movie';
-				$action 	= 'show';
-				$p_key 		= $request_uri[3];
+		// remove last element of array if it is empty. 
+		// this is in case the user has an extra / at the end of url
+		if (count($info) > 1) {
+			if ($info[count($info)-1] == "") {
+				array_pop($info);
 			}
-*/
-			break;
-
-		case 'login':
-			$controller = 'User';
-			$action 	= 'login';
-			break;
-
-		case 'users':
-			$controller = 'User';
-			$action 	= 'index';
-			break;
-
-		default:
-			$controller = 'Index';
-			$action 	= 'error';
-			break;
+		}
+		//echo "<p> in for loop count($info)= ". count($info) . "</p>";
+		break;
 	}
+}
+//echo "<p>count($info)= ". count($info) . "</p>";
+//for ($i=0; $i < count($info); $i++) { 
+	//echo "<p>info[". $i . "] = " . $info[$i] . "</p>";
+//}
 
-	define("CONTROLLER", $controller);  
-	define("ACTION", 	 $action);
-	define("P_KEY", 	 $p_key);
+$controller;
+$action;
+$parameters = array();
+if (count($info) == 1) {
+	$controller = 'Index';
+	$action = 'index';
+}
+else {
+	$controller = $info[1];
+	$action = $info[2];			
+	if (count($info) >= 3) {
+		$parameters = array_slice($info, 3);
+	}		
+}
+//echo "<p>controller= ". $controller . "</p>";
+//echo "<p>action= ". $action . "</p>";
+//echo "<p>parameters = </p>";
+//echo "<pre>";
+//print_r($parameters);
+//echo "</pre>";
+
+
+define("CONTROLLER", $controller);  
+define("ACTION", 	 $action);
+define("PARAMETERS", $parameters);
 
 ?>

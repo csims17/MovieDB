@@ -17,4 +17,13 @@ class UserController extends Controller{
         //$movies = $movieModel->getMovies();
         include  CURR_VIEW_PATH . "users". DS . "login.php";
     }
+    public function createAction() {
+        //echo "index action called in user controller";
+        // Load View template
+        //$movieModel = new MovieModel("movies");
+        //$movies = $movieModel->getMovies();
+        include  CURR_VIEW_PATH . "users". DS . "create.php";
+    }
 }
+
+
