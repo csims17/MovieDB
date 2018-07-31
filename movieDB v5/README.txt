@@ -1,1 +1,0 @@
-why is there so many sub directories. there should only be one version. this version should be moved up a directory and project src should be removed.
