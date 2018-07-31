@@ -1,8 +1,10 @@
 <?php
-//echo "<p>index.php called</p>";
-
-//echo "<p>";
-//echo "<p>index.php called</p>";
+/*
+echo "<h3>Get request variables</h3>";
+echo "<pre>";
+print_r($_GET);
+echo "</pre>";
+*/
 require "framework/core/Framework.class.php";
 Framework::run();
 

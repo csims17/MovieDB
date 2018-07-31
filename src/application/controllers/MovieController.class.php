@@ -10,10 +10,12 @@ class MovieController extends Controller{
         include  CURR_VIEW_PATH . "movies". DS . "index.php";
     }
 
-    public function showAction() {
+    public function showAction($parameters) {
         // Load View template
         $movieModel = new MovieModel("movies");
-        $movie = $movieModel->getMovie("id");
+        $movie = $movieModel->getMovie($_GET['id']);
+        $movie = $movie->fetch_assoc();
+
         include  CURR_VIEW_PATH . "movies". DS  . "show.php";
         // movieDB/application/views/movies/show.php;
     }

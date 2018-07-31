@@ -107,7 +107,16 @@ class Framework {
 		//echo $action_name;
 		$controller 	 = new $controller_name;
 		try {
-			$controller->$action_name();
+			$parameters = PARAMETERS;
+			if (count($parameters) > 0) {
+				//echo "<pre>";
+				//print_r($parameters);
+				//echo "</pre>";
+				$controller->$action_name($parameters);
+			}
+			else {
+				$controller->$action_name();
+			}
 			
 		} catch (Exception $e) {
 			include CURR_VIEW_PATH . "404.php";

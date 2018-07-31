@@ -13,6 +13,7 @@ class MovieModel extends Model {
 
     public function getMovie($id) {
     	$sql = "select * from movies where id =" . $id;
+        //echo $sql;
     	$result = $this->query($sql);
     	return $result;
     }
