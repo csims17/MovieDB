@@ -53,7 +53,6 @@ else {
 //print_r($parameters);
 //echo "</pre>";
 
-
 define("CONTROLLER", $controller);  
 define("ACTION", 	 $action);
 define("PARAMETERS", $parameters);
