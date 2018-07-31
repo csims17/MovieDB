@@ -20,8 +20,8 @@ class Mysql{
     public function __construct($config = array()){
         
         $server   = isset($config['DB_SERVER'])?   $config['DB_SERVER']   : 'localhost';
-        $user     = isset($config['DB_USERNAME'])? $config['DB_USERNAME'] : 'root';
-        $password = isset($config['DB_PASSWORD'])? $config['DB_PASSWORD'] : '9UfhC%DHbC.G=tY.';
+        $user     = isset($config['DB_USERNAME'])? $config['DB_USERNAME'] : 'nstaffo2';
+        $password = isset($config['DB_PASSWORD'])? $config['DB_PASSWORD'] : 'yt2aP2yJ';
         $dbname   = isset($config['DB_NAME'])?     $config['DB_NAME']     : 'nstaffo2';
         $port     = isset($config['DB_PORT'])?     $config['DB_PORT']     : '3306';
         $charset  = isset($config['DB_CHARSET'])?  $config['DB_CHARSET']  : '3306';

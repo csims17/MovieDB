@@ -18,6 +18,4 @@ class MovieModel extends Model {
     	return $result;
     }
 
-    
-
 }

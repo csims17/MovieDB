@@ -1,5 +1,5 @@
 <?php include CURR_VIEW_PATH . 'inc' . DS . 'header.php';   ?>
-
+<?php require_once CORE_PATH . "Paginator.class.php"; ?>
 
 <h1>MovieDB All Movies</h1>
 
