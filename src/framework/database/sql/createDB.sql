@@ -30,22 +30,22 @@ create table reviews (
 );
 
 create table actors (
-	id 			int 			unsigned not null ,
+	id 			int 			unsigned auto_increment not null ,
 	name		varchar(50) 	not null,
-	birthday	date 			not null,
+	#gender		varchar(10) 	not null,
 	primary key (id)
 );
 
 create table movie_actors (
-	movie_id	int 			unsigned not null ,
 	actor_id	int 			unsigned not null ,
+	movie_id	int 			unsigned not null ,
 	foreign key (movie_id)		references movies(id) 
 								on delete cascade
 								on update cascade,
 	foreign key (actor_id)		references actors(id)
 								on delete cascade
-								on update cascade,
-	primary key (movie_id, actor_id)
+								on update cascade
+	#primary key (actor_id)
 );
 
 create table genres (
