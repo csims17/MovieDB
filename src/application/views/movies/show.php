@@ -1,10 +1,26 @@
-<?php
-    //echo "<h3>" . "id: " . 			 $movie["id"] . 			"</h3>";
-    echo "<h3>" . $movie["title"] . "</h3>";
-    echo "<p>"  . $movie["description"] . 	"</p>";
-    echo "<p>"  . "release date: " . $movie["releaseDate"] . 	"</p>";
-    echo "<p>"  . "length: " . 		 $movie["minutes"] . 		" min </p>";
+<?php include CURR_VIEW_PATH . 'inc' . DS . 'header.php';   ?>
+
+<pre>
+	<?php print_r($movie) ?>
+</pre>
+
+
+<h1>
+	<?php echo $movie['title'] ?>
+</h1>
+
+<p>
+	<?php echo $movie['description'] ?>
+</p>
+<?php 
     if (! is_null($movie["link"])) {
-        echo "<a href=" . $movie["link"] . ">link </a>";
+    	echo '<iframe width="560" height="315" src=' . $movie['link'] . ' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
     }
-?>
+ ?>
+
+<a href=<?php echo URL_ROOT . "Movie/edit/?id=" . $movie['id'] ?>>Edit Movie</a>
+
+<?php include CURR_VIEW_PATH . 'inc' . DS . 'footer.php';   ?>
+
+
+
