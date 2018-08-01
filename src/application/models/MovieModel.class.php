@@ -19,8 +19,6 @@ class MovieModel extends Model {
         return $paginator;
         //$results    = $Paginator->getData( $page, $limit );
         //return $results;
-
-
     }
 
     public function getMovie($id) {
