@@ -7,6 +7,7 @@ class ReviewModel extends Model {
   $sql .= " SET rating =" . $rating;
   $sql .= " WHERE username =" . $username;
   $sql .= " AND movie_id =" . $movie_id;
+  $sql .= ";";
     
     $result = $this->query($sql);
     return $result;
