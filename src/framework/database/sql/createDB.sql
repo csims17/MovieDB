@@ -45,7 +45,7 @@ create table movie_actors (
 	foreign key (actor_id)		references actors(id)
 								on delete cascade
 								on update cascade
-	#primary key (actor_id)
+	primary key (actor_id)
 );
 
 create table movie_genre (
@@ -54,5 +54,5 @@ create table movie_genre (
 	foreign key (movie_id) 		references movies(id)
 								on delete cascade
 								on update cascade
-	#primary key (movie_id, genre)
+	primary key (movie_id, genre)
 );
