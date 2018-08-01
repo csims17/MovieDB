@@ -33,4 +33,19 @@ class MovieController extends Controller{
         include  CURR_VIEW_PATH . "movies". DS  . "show.php";
         // movieDB/application/views/movies/show.php;
     }
+
+    public function editAction($parameters) {
+        // if user is not logged in, load login page
+        // todo
+
+        // else load edit page
+        print_r($parameters);
+        $movieModel = new MovieModel("movies");
+        $movie = $movieModel->getMovie($_GET['id']);
+        $movie = $movie->fetch_assoc();
+
+        include  CURR_VIEW_PATH . "movies". DS  . "show.php";
+
+    }
+
 }
