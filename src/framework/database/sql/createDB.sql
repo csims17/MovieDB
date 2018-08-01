@@ -53,6 +53,6 @@ create table movie_genre (
 	genre 		varchar(25) 	not null,
 	foreign key (movie_id) 		references movies(id)
 								on delete cascade
-								on update cascade,
-	primary key (movie_id, genre)
+								on update cascade
+	#primary key (movie_id, genre)
 );
