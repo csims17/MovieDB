@@ -7,9 +7,7 @@
 class Model{
 
     protected $db; //database connection object
-
     protected $table; //table name
-
     protected $fields = array();  //fields list
 
     public function __construct($table){
