@@ -28,4 +28,15 @@ class MovieModel extends Model {
     	return $result;
     }
 
+    public function editMovie($id, $changes) {
+
+        $sql =  "UPDATE movies";
+        $sql .= "SET column1 = value1, column2 = value2";
+        for ($i=0; $i < count($changes); $i++) { 
+            # code...for each item in changes, ....
+        }
+        $sql .= "WHERE id= ". $id . ";";
+        $this->query($sql);
+    }
+
 }

@@ -11,7 +11,15 @@
             <?php $movie = $movies[$i] ?>
 
             <li class="list-group-item">
-                <?php include CURR_VIEW_PATH . DS . "movies" . DS . "show.php"; ?>
+                <h3>
+                    <a href=<?php echo URL_ROOT . "Movie/show/?id=" . $movie['id'] ?>>
+                        <?php echo $movie["title"] ?>
+                    </a>
+                </h3>
+            <?php
+                echo "<p>"  . $movie["description"] .   "</p>";
+                echo "<p>"  . "release date: " . $movie["releaseDate"] .    "</p>";
+            ?>
             </li>
         <?php endfor ?>
     </ul>
@@ -22,6 +30,5 @@
 <?php else: ?>
     <p>No movies in db</p>
 <?php endif ?>
-
 
 <?php include CURR_VIEW_PATH . 'inc' . DS . 'footer.php';   ?>
