@@ -48,18 +48,10 @@ create table movie_actors (
 	#primary key (actor_id)
 );
 
-create table genres (
-	genre 		varchar(25) not null, 
-	primary key (genre)
-);
-
 create table movie_genre (
 	movie_id	int 			unsigned not null ,
 	genre 		varchar(25) 	not null,
 	foreign key (movie_id) 		references movies(id)
-								on delete cascade
-								on update cascade,
-	foreign key (genre) 		references genres(genre)
 								on delete cascade
 								on update cascade,
 	primary key (movie_id, genre)
