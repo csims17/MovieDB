@@ -7,11 +7,9 @@ class ReviewModel extends Model {
   $sql .= " SET rating =" . $rating;
   $sql .= " WHERE username =" . $username;
   $sql .= " AND movie_id =" . $movie_id;
-  $sql .= ";";
     
-    retrun $sql;
-    //$result = $this->query($sql);
-    //return $result;
+    $result = $this->query($sql);
+    return $result;
   }
  //public function getPaginatedReviews() {}
   //public function getReviews($username) {}
