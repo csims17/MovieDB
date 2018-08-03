@@ -1,4 +1,4 @@
-<form method="post">
+<form method="post"  action=<?php echo "'" . URL_ROOT . "Movie/search" . "'" ?>>
   <div class="form-group">
     <label>Title</label>
     <input type="text" class="form-control" name="title" placeholder="(Batman The Dark Knight)">
@@ -6,5 +6,7 @@
   <input type ="submit"> 
   </form>
  
+
+	
 
 

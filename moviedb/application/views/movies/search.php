@@ -15,11 +15,6 @@
 <?php echo 'Release Date: ' . $movie['releaseDate'] ?> 
 </p>
 
-<p> 
-<?php while ($genre = $genres->fetch_assoc()) 
-	{echo "Genre(s) for this movie: ". $genre["genre"];} 
-?>
-</p> 
 
 <p align=center><?php 
    if (! is_null($movie["link"])) {  

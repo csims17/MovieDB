@@ -64,34 +64,37 @@ class MovieModel extends Model {
 	////////////////////////////////////////////////////////SEARCH///////////////////////////////////////////
 
 	public function getTitle($paramaters) {
-		$sql = "select * from movies where title =" . $paramaters;
+		$sql = "select * from movies where title = " . '"' . $paramaters . '"';
+		 
 		$result = $this->query($sql);
 		return $result;
+		
     }
 
-    public function createMovie($changes) {
-        echo "<p>statement 1</p>";
-        $sql =  "INSERT into movies(title, description, releaseDate, minutes, link) values";
+    public function createMovie($title, $description, $releaseDate, $minutes, $link){
         
-        if (isset( $changes['title'])) {
-            $sql .=  $changes['title'] . "',";
-        }
-        if (isset( $changes['description'])) {
-            $sql .= $changes['description'] . "',";
-        }
-        if (isset( $changes['releaseDate'])) {
-            $sql .=  $changes['releaseDate'] . "',";
-        }
-        if (isset( $changes['minutes'])) {
-            $sql .= $changes['minutes'] . ",";
-        }
-        if (isset( $changes['link'])) {
-            $sql .=  $changes['link'] . "',";
-        }
+        $sql =  "INSERT into movies(title, description, releaseDate, minutes, link) values (";
+        
+        
+            $sql .= "'" .$title . "',";
+        
+      
+            $sql .= "'" .$description . "',";
+        
+        
+            $sql .= "'". $releaseDate . "',";
+        
+        
+            $sql .= $minutes . ",'";
+        
+        
+            $sql .=  $link . "') ";
+        
 
         $sql = substr($sql, 0, -1). " ";
 
-        echo $sql."<br>"; 
+         
         $this->query($sql);
+		
     }
 }

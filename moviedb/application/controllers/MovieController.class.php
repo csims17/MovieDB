@@ -86,36 +86,32 @@ class MovieController extends Controller{
 
     public function createAction() {
         $movieModel = new MovieModel("movies");
-        echo "create called";
-        print_r($_POST);
-        $changes = array();
         
-            $changes['title'] = $_POST['title'];
+          
+		    $title = $_POST['title'];
         
        
-            $changes['description'] = $_POST['description'];
+            $description = $_POST['description'];
         
         
-            $changes['releaseDate'] = $_POST['releaseDate'];
+            $releaseDate = $_POST['releaseDate'];
         
        
-            $changes['minutes'] = $_POST['minutes'];
+            $minutes = $_POST['minutes'];
         
     
-            $changes['link'] = $_POST['link'];
+            $link = $_POST['link'];
         
-        $movieModel->createMovie($changes);
-       
+        $movieModel->createMovie($title, $description, $releaseDate, $minutes, $link);
+		include  CURR_VIEW_PATH . "movies". DS  . "create.php";   
     }
 
     public function searchAction() {
 		//This is a search function.
 		$movieModel = new MovieModel("movies");
-		$movie = $movieModel->getTitle($_GET["name"]);
+		$movie = $movieModel->getTitle($_POST["title"]);
         $movie = $movie->fetch_assoc();
-        if (isset($_POST['name'])) {
-            $changes['name'] = $_POST['name'];
-        }
-		include  CURR_VIEW_PATH . "movies". DS  . "show.php";
+       
+		include  CURR_VIEW_PATH . "movies". DS  . "search.php";
 	}
 }
