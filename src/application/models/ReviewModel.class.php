@@ -19,5 +19,16 @@ class ReviewModel extends Model {
     $result = $this->query($sql);
     return $result; 
   }
+    public function getSingleReview($username, $movie_id){
+
+$sql = "SELECT reviews";
+$sql .= " WHERE username =" . $username;
+$sql .= " AND movie_id =" . $movie_id;
+
+$result = $this->query($sql);
+//echo $result;
+return $result;
+
+  }
 }
 ?>
