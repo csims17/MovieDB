@@ -46,18 +46,17 @@ class MovieController extends Controller{
 
         // else load edit page
         
-        print_r($id);
+        //print_r($id);
         $movieModel = new MovieModel("movies");
         $movie = $movieModel->getMovie($_GET['id']);
         $movie = $movie->fetch_assoc();
 
         include  CURR_VIEW_PATH . "movies". DS  . "edit.php";
-    
     }
-    public function updateAction($id) {
+
+    public function updateAction() {
         $movieModel = new MovieModel("movies");
         echo "update called";
-
     }
 
 }
