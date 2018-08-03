@@ -1,34 +1,35 @@
 <?php include CURR_VIEW_PATH . 'inc' . DS . 'header.php';   ?>
+<?php require_once CORE_PATH . "Paginator.class.php"; ?>
 
-<a href=></a>
 <h1>MovieDB All Actors</h1>
-<nav aria-label="Page navigation top">
-    <?php echo $paginator->createLinks( $links); ?> 
-</nav>
-<?php if (count($actors) > 0) : ?>
-    <ul class="list-group">
-        <?php for ($i=0; $i < count($actors); $i++) : ?>
-            <?php $actor = $actors[$i] ?>
 
-            <li class="list-group-item">
-                <h3>
-                    <a href=<?php echo URL_ROOT . "actor/show/?id=" . $actor['id'] ?>>
-                        <?php echo $actor["name"] ?>
-                    </a>
-                </h3>
-            <?php
-                //echo "<p>"  . $actor["description"] .   "</p>";
-                //echo "<p>"  . "release date: " . $actor["releaseDate"] .    "</p>";
-            ?>
-            </li>
-        <?php endfor ?>
+<?php if ($actors->num_rows > 0) : ?>
+    <ul class="list-group">
+        <?php while($actor = $actors->fetch_assoc()) : ?>
+            
+
+        <li class="list-group-item">
+            <?php include CURR_VIEW_PATH . DS . "actors" . DS . "show.php"; ?>
+        </li>
+        <?php endwhile ?>
     </ul>
-    <br>
-    <nav aria-label="Page navigation bottom">
-        <?php echo $paginator->createLinks( $links); ?> 
-    </nav>
 <?php else: ?>
-    <p>No actors in db</p>
+    <p>0 results</p>
 <?php endif ?>
+<?php /*
+        echo "<ul class='list-group'>";
+        while($actor = $actors->fetch_assoc()) {
+            echo "<li class='list-group-item'></li>";
+            //echo "<li class='list-group-item' >";
+            //include CURR_VIEW_PATH . DS . "actors" . DS . "show.php";
+            //echo "</li>";
+        }
+        echo "</ul>";
+        
+    } else {
+        echo "<p>0 results</p>";
+    }
+    */
+?>
 
 <?php include CURR_VIEW_PATH . 'inc' . DS . 'footer.php';   ?>
