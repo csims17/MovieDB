@@ -30,19 +30,29 @@ class MovieModel extends Model {
 
     public function editMovie($id, $changes) {
         echo "<p>statement 1</p>";
-        $sql =  "UPDATE movies";
-        echo "<p>statement 2</p>";
-        $sql .= " SET column1 = value1, column2 = value2";
-         echo "<p>statement 3</p>";
-       for ($i=0; $i < count($changes); $i++) { 
-            # code...for each item in changes, ....;
-        };
-        echo "<p>statement 4</p>";
+        $sql =  "UPDATE movies SET";
+        
+        if (isset( $changes['title'])) {
+            $sql .= " title = '" . $changes['title'] . "',";
+        }
+        if (isset( $changes['description'])) {
+            $sql .= " description = '" . $changes['description'] . "',";
+        }
+        if (isset( $changes['releaseDate'])) {
+            $sql .= " releaseDate = '" . $changes['releaseDate'] . "',";
+        }
+        if (isset( $changes['minutes'])) {
+            $sql .= " minutes = " . $changes['minutes'] . ",";
+        }
+        if (isset( $changes['link'])) {
+            $sql .= " link = '" . $changes['link'] . "',";
+        }
+
+        $sql = substr($sql, 0, -1). " ";
+
         $sql .= " WHERE id= ". $id . ";";
+        echo $sql."<br>"; 
         $this->query($sql);
-        echo "<p>statement 5</p>";
-        echo $sql;
-        echo "<p>statement 6</p>";
     }
 
 }

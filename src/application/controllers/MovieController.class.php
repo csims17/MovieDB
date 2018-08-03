@@ -57,6 +57,29 @@ class MovieController extends Controller{
     public function updateAction() {
         $movieModel = new MovieModel("movies");
         echo "update called";
+        print_r($_POST);
+        if (!isset($_POST['id'])) {
+            echo "id not set";
+            return 0;
+        }
+        $id = $_POST['id'];
+        $changes = array();
+        if (isset($_POST['title'])) {
+            $changes['title'] = $_POST['title'];
+        }
+        if (isset($_POST['description'])) {
+            $changes['description'] = $_POST['description'];
+        }
+        if (isset($_POST['releaseDate'])) {
+            $changes['releaseDate'] = $_POST['releaseDate'];
+        }
+        if (isset($_POST['minutes'])) {
+            $changes['minutes'] = $_POST['minutes'];
+        }
+        if (isset($_POST['link'])) {
+            $changes['link'] = $_POST['link'];
+        }
+        $movieModel->editMovie($id, $changes);
+        header("Location: " . URL_ROOT . "Movie/show/?id=" . $id);
     }
-
 }
