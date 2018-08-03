@@ -8,6 +8,9 @@
 <p>
 	<?php echo $movie['description'] ?>
 </p>
+<h8>
+	<a href="<?php echo $movie['link'];?>"> <?php echo $movie['title'];?> </a>
+</h8>
 <?php 
     if (! is_null($movie["link"])) {
     	echo '<iframe width="560" height="315" src=' . $movie['link'] . ' frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
