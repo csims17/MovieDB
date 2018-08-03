@@ -24,6 +24,7 @@ class ActorController extends Controller{
         $result     = $paginator->getData($limit, $page);
         $actors     = $result->data;
         include  CURR_VIEW_PATH . "actors". DS . "index.php";
+    }
 
     public function showAction() {
         //echo "<h1>ShowAction not yet implemented</h1>";
