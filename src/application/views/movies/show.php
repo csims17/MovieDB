@@ -18,7 +18,7 @@
     }
  ?>
 
-<a href=<?php echo URL_ROOT . "Movie/edit/?id=" . $movie['id'] ?>>Edit Movie</a>
+<a class="btn btn-primary d-inline-block" href=<?php echo URL_ROOT . "Movie/edit/?id=" . $movie['id'] ?>>Edit Movie</a>
 
 <?php include CURR_VIEW_PATH . 'inc' . DS . 'footer.php';   ?>
 

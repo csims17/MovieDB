@@ -29,14 +29,20 @@ class MovieModel extends Model {
     }
 
     public function editMovie($id, $changes) {
-
+        echo "<p>statement 1</p>";
         $sql =  "UPDATE movies";
-        $sql .= "SET column1 = value1, column2 = value2";
-        for ($i=0; $i < count($changes); $i++) { 
-            # code...for each item in changes, ....
-        }
-        $sql .= "WHERE id= ". $id . ";";
+        echo "<p>statement 2</p>";
+        $sql .= " SET column1 = value1, column2 = value2";
+         echo "<p>statement 3</p>";
+       for ($i=0; $i < count($changes); $i++) { 
+            # code...for each item in changes, ....;
+        };
+        echo "<p>statement 4</p>";
+        $sql .= " WHERE id= ". $id . ";";
         $this->query($sql);
+        echo "<p>statement 5</p>";
+        echo $sql;
+        echo "<p>statement 6</p>";
     }
 
 }

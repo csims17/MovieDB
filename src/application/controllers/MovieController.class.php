@@ -24,7 +24,7 @@ class MovieController extends Controller{
         include  CURR_VIEW_PATH . "movies". DS . "index.php";
     }
 
-    public function showAction($parameters) {
+    public function showAction($id) {
         // Load View template
         $movieModel = new MovieModel("movies");
         $movie = $movieModel->getMovie($_GET['id']);
@@ -34,17 +34,29 @@ class MovieController extends Controller{
         // movieDB/application/views/movies/show.php;
     }
 
-    public function editAction($parameters) {
+    public function editAction($id) {
+        /*
+        $movieModel = new MovieModel("movies");
+        $changes = array('key' => 3 );
+        $movieModel->editMovie("333", $changes);
+        */
+
         // if user is not logged in, load login page
         // todo
 
         // else load edit page
-        print_r($parameters);
+        
+        print_r($id);
         $movieModel = new MovieModel("movies");
         $movie = $movieModel->getMovie($_GET['id']);
         $movie = $movie->fetch_assoc();
 
-        include  CURR_VIEW_PATH . "movies". DS  . "show.php";
+        include  CURR_VIEW_PATH . "movies". DS  . "edit.php";
+    
+    }
+    public function updateAction($id) {
+        $movieModel = new MovieModel("movies");
+        echo "update called";
 
     }
 
